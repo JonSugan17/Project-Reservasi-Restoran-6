@@ -15,6 +15,7 @@ Begin
     writeln('moga wangy');
     writeln('dwislamy');
     writeln('Mau tidur dulu');
+    writeln('Bruh');
     readln(i);
 
 end.
