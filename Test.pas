@@ -17,6 +17,7 @@ Begin
     writeln('Mau tidur dulu');
     writeln('Bruh');
     write('iwak');
+    write('kontak');
     readln(i);
 
 end.
