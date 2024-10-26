@@ -6,7 +6,8 @@ i :string;
 
 Begin
     clrscr;
-    wreiteln('Hello World');
+    writeln('Hello World');
     writeln('Input Hello World');
+    writeln('Fugue');
     readln(i);
 end.
