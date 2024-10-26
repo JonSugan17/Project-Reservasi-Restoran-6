@@ -13,6 +13,7 @@ Begin
     writeln('Input Hello World');
     writeln('Fugue123');
     writeln('moga wangy');
+    writeln('dwislamy');
     readln(i);
 
 
