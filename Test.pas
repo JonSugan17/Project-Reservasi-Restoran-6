@@ -1,10 +1,8 @@
 Program Test;
 uses crt;
-
 var
-i :string;
+i : string;
 nama : string;
-
 
 Begin
     clrscr;
@@ -15,7 +13,6 @@ Begin
     writeln('moga wangy');
     writeln('dwislamy');
     writeln('Mau tidur dulu');
-    writeln('Bruh');
     write('iwak');
     readln(i);
 
