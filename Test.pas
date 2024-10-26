@@ -8,6 +8,6 @@ Begin
     clrscr;
     writeln('Hello World');
     writeln('Input Hello World');
-    writeln('Fugue');
+    writeln('Fugue123');
     readln(i);
 end.
