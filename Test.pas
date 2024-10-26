@@ -1,6 +1,7 @@
 Program Test;
 uses crt;
 
+var
 i :string;
 
 Begin
