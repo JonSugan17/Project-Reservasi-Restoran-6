@@ -14,7 +14,7 @@ Begin
     writeln('Fugue123');
     writeln('moga wangy');
     writeln('dwislamy');
-    writeln('Mau tidur');
+    writeln('Mau tidur dulu');
     readln(i);
 
 end.
