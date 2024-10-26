@@ -16,5 +16,4 @@ Begin
     writeln('dwislamy');
     readln(i);
 
-
 end.
