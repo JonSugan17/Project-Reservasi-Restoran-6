@@ -1,7 +1,10 @@
 Program Test;
 uses crt;
 
+i :string;
+
 Begin
     clrscr;
-    write('Hello World');
+    writeln('Input Hello World');
+    readln(i);
 end.
