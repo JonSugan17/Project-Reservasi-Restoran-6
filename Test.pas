@@ -17,5 +17,6 @@ Begin
     writeln('Mau tidur dulu');
     writeln('Bruh');
     readln(i);
+    readln;
 
 end.
