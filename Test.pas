@@ -9,5 +9,6 @@ Begin
     writeln('Hello World');
     writeln('Input Hello World');
     writeln('Fugue');
+    writeln('moga wangy');
     readln(i);
 end.
