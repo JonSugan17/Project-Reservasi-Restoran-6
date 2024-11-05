@@ -1,7 +1,21 @@
 program SistemReservasiRestoran;
 uses crt;
 
+var
+
+
 Begin
+//Nambah Code dari sini jangan dibawah Menu
+
+
+
+
+
+
+
+
+
+
     clrscr;
     writeln('Menu Sistem Reservasi Restoran');
     writeln('1. Tampilakan Ketersediaan');
