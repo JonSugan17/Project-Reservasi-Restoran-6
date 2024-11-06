@@ -1,6 +1,5 @@
 program SistemReservasiRestoran;
 uses crt;
-
 // Attribut dari meja yang dipesan 
 type
     Tmeja = record
@@ -11,15 +10,28 @@ type
     no_telepon: string;      // nomor telepon pemesan meja
     jumlah_tamu: integer;    // jumlah tamu pada meja tersebut
     catatan: string;         // catatan pemesan meja
-
+    
 var
-
-
+    meja: array[1..20] of Tmeja;        // penyimpanan sementara data meja
+    txt: text                           // file untuk menyimpan data
+    pilihan: integer                    // pilihan menu yang akan dipilih
+// procedure untuk menetapkan nilai default attribut meja
+procedure inisialisasiMeja;
+var
+    i : integer
 begin
-//Nambah Code dari sini jangan dibawah Menu
-
-
-
+    // menetapkan nilai attribut meja menggunakan perulangan
+    for i := 1 to 20 do
+    begin
+        meja[i].nomor := i,
+        meja[i].tersedia := true;
+        meja[i].nama := '';`
+        meja[i].email := '';
+        meja[i].no_telepon := '';
+        meja[i].jumlah_tamu := '';
+        meja[i].catatan := '';
+    end;
+end;
 
 
 
@@ -27,6 +39,7 @@ begin
 
 
 // Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
+begin
     clrscr;
     writeln('Menu Sistem Reservasi Restoran');
     writeln('1. Tampilakan Ketersediaan');
@@ -35,5 +48,4 @@ begin
     writeln('4. Cari Reservasi');
     writeln('5. Keluar');
     writeln('Pilih Menu: '); readln();
-
 end.
