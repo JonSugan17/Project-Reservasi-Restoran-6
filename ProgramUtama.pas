@@ -11,8 +11,7 @@ type
     no_telepon: string;      // nomor telepon pemesan meja
     jumlah_tamu: integer;    // jumlah tamu pada meja tersebut
     catatan: string;         // catatan pemesan meja
-
-
+    
 var
     meja: array[1..20] of Tmeja;        // penyimpanan sementara data meja
     txt: text                           // file untuk menyimpan data
@@ -37,8 +36,6 @@ begin
     end;
 end;
 
-Begin
-//Nambah Code dari sini jangan dibawah Menu
 
 
 
