@@ -1,6 +1,17 @@
 program SistemReservasiRestoran;
 uses crt;
 
+// Attribut dari meja yang dipesan 
+type
+    Tmeja = record
+    nomor: integer;          // nomor meja
+    tersedia: boolean;       // ketersediaan meja, jika tersedia maka nilainya true
+    nama: string;            // nama pemesan meja
+    email: string;           // email pemesan meja
+    no_telepon: string;      // nomor telepon pemesan meja
+    jumlah_tamu: integer;    // jumlah tamu pada meja tersebut
+    catatan: string;         // catatan pemesan meja
+
 var
 
 
