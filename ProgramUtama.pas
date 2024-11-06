@@ -12,7 +12,10 @@ type
     jumlah_tamu: integer;    // jumlah tamu pada meja tersebut
     catatan: string;         // catatan pemesan meja
 
-Begin
+var
+
+
+begin
 //Nambah Code dari sini jangan dibawah Menu
 
 
