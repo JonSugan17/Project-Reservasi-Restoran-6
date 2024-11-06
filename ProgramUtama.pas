@@ -12,9 +12,6 @@ type
     jumlah_tamu: integer;    // jumlah tamu pada meja tersebut
     catatan: string;         // catatan pemesan meja
 
-var
-
-
 Begin
 //Nambah Code dari sini jangan dibawah Menu
 
@@ -26,7 +23,7 @@ Begin
 
 
 
-
+// Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
     clrscr;
     writeln('Menu Sistem Reservasi Restoran');
     writeln('1. Tampilakan Ketersediaan');
