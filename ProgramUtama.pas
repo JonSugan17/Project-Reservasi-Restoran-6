@@ -46,6 +46,7 @@ end;
 
 
 // Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
+begin
     clrscr;
     writeln('Menu Sistem Reservasi Restoran');
     writeln('1. Tampilakan Ketersediaan');
