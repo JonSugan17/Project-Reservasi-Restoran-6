@@ -12,6 +12,31 @@ type
     jumlah_tamu: integer;    // jumlah tamu pada meja tersebut
     catatan: string;         // catatan pemesan meja
 
+
+var
+    meja: array[1..20] of Tmeja;        // penyimpanan sementara data meja
+    txt: text                           // file untuk menyimpan data
+    pilihan: integer                    // pilihan menu yang akan dipilih
+
+
+// procedure untuk menetapkan nilai default attribut meja
+procedure inisialisasiMeja;
+var
+    i : integer
+begin
+    // menetapkan nilai attribut meja menggunakan perulangan
+    for i := 1 to 20 do
+    begin
+        meja[i].nomor := i,
+        meja[i].tersedia := true;
+        meja[i].nama := '';`
+        meja[i].email := '';
+        meja[i].no_telepon := '';
+        meja[i].jumlah_tamu := '';
+        meja[i].catatan := '';
+    end;
+end;
+
 Begin
 //Nambah Code dari sini jangan dibawah Menu
 
