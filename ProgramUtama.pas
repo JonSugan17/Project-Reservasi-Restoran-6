@@ -15,6 +15,8 @@ var
     meja: array[1..20] of Tmeja;        // penyimpanan sementara data meja
     txt: text                           // file untuk menyimpan data
     pilihan: integer                    // pilihan menu yang akan dipilih
+
+
 // procedure untuk menetapkan nilai default attribut meja
 procedure inisialisasiMeja;
 var
@@ -34,6 +36,22 @@ begin
 end;
 
 
+// procedure untuk mengecek apakah terdapat meja yang tersedia
+procedure tampilkanKetersediaan;
+var
+    i : integer
+begin
+    writeln('Data Meja Yang Masih Tersedia');
+    for i := 1 to 20 do             // perulangan dilakukan sebanyak 20 kali 
+    begin
+        if meja[i].tersedia then
+            // Jika meja tersedia                                
+            writeln('Meja ', meja[i].nomor, ' - Tersedia')
+        else
+            // Jika meja sudah dipesan
+            writeln('Meja ', meja[i].nomor, ' - Dipesan Oleh ', meja[i].nama);
+    end;
+end;
 
 
 
