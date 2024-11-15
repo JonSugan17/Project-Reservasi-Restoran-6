@@ -93,6 +93,59 @@ begin
     writeln('Reservasi Berhasil!');
 end;
 
+procedure SimpanDataReservasi;
+var
+    i: integer;
+begin
+    assign(txt, 'data_reservasi.txt');
+    rewrite(txt);
+    for i := 1 to 20 do
+    begin
+        if not meja[i].tersedia then
+        begin
+            writeln(txt, 'Meja ', meja[i].nomor, ':');
+            writeln(txt, '  Nama       : ', meja[i].nama);
+            writeln(txt, '  Email      : ', meja[i].email);
+            writeln(txt, '  No. Telepon: ', meja[i].no_telepon);
+            writeln(txt, '  Jumlah Tamu: ', meja[i].jumlah_tamu);
+            writeln(txt, '  Catatan    : ', meja[i].catatan);
+            writeln(txt);
+        end;
+    end;
+    close(txt);
+    writeln('Data reservasi telah disimpan ke file data_reservasi.txt');
+end;
+
+procedure SimpanDataReservasi;
+var
+    i: integer; // Variabel untuk iterasi melalui array meja
+begin
+    // Menghubungkan variabel `txt` dengan file bernama 'data_reservasi.txt'
+    assign(txt, 'data_reservasi.txt');
+    // Membuka file untuk ditulis ulang, file sebelumnya akan dihapus jika ada
+    rewrite(txt);
+    // Looping untuk memproses semua meja dari nomor 1 hingga 20
+    for i := 1 to 20 do
+    begin
+        // Memeriksa apakah meja telah dipesan (tidak tersedia)
+        if not meja[i].tersedia then
+        begin
+            // Menulis data meja yang telah dipesan ke dalam file
+            writeln(txt, 'Meja ', meja[i].nomor, ':'); // Menulis nomor meja
+            writeln(txt, '  Nama       : ', meja[i].nama); // Menulis nama pemesan
+            writeln(txt, '  Email      : ', meja[i].email); // Menulis email pemesan
+            writeln(txt, '  No. Telepon: ', meja[i].no_telepon); // Menulis nomor telepon
+            writeln(txt, '  Jumlah Tamu: ', meja[i].jumlah_tamu); // Menulis jumlah tamu
+            writeln(txt, '  Catatan    : ', meja[i].catatan); // Menulis catatan tambahan
+            writeln(txt); // Menulis baris kosong untuk memisahkan setiap meja
+        end;
+    end;
+    // Menutup file setelah selesai menulis
+    close(txt);
+    // Memberikan konfirmasi kepada pengguna bahwa data telah disimpan
+    writeln('Data reservasi telah disimpan ke file data_reservasi.txt');
+end;
+
 // Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
 begin
     clrscr;
