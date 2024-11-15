@@ -58,7 +58,8 @@ procedure reservasiMeja;
 var
     nomorMeja: integer;
 begin
-    writeln('Reservasi Meja');
+    writeln('=====================');
+    writeln('   Reservasi Meja');
     writeln('=====================');
     
     // Tampilkan ketersediaan meja terlebih dahulu
@@ -95,7 +96,9 @@ end;
 // Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
 begin
     clrscr;
+    writeln('===============================');
     writeln('Menu Sistem Reservasi Restoran');
+    writeln('===============================');
     writeln('1. Tampilakan Ketersediaan');
     writeln('2. Reservasi Meja');
     writeln('3. simpan Data Reservasi');
