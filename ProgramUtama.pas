@@ -93,28 +93,6 @@ begin
     writeln('Reservasi Berhasil!');
 end;
 
-procedure SimpanDataReservasi;
-var
-    i: integer;
-begin
-    assign(txt, 'data_reservasi.txt');
-    rewrite(txt);
-    for i := 1 to 20 do
-    begin
-        if not meja[i].tersedia then
-        begin
-            writeln(txt, 'Meja ', meja[i].nomor, ':');
-            writeln(txt, '  Nama       : ', meja[i].nama);
-            writeln(txt, '  Email      : ', meja[i].email);
-            writeln(txt, '  No. Telepon: ', meja[i].no_telepon);
-            writeln(txt, '  Jumlah Tamu: ', meja[i].jumlah_tamu);
-            writeln(txt, '  Catatan    : ', meja[i].catatan);
-            writeln(txt);
-        end;
-    end;
-    close(txt);
-    writeln('Data reservasi telah disimpan ke file data_reservasi.txt');
-end;
 
 procedure SimpanDataReservasi;
 var
