@@ -53,8 +53,44 @@ begin
     end;
 end;
 
+// Procedure untuk melakukan reservasi meja
+procedure reservasiMeja;
+var
+    nomorMeja: integer;
+begin
+    writeln('Reservasi Meja');
+    writeln('=====================');
+    
+    // Tampilkan ketersediaan meja terlebih dahulu
+    tampilkanKetersediaan;
+    
+    writeln;
+    write('Masukkan Nomor Meja yang Ingin Dipesan (1-20): '); 
+    readln(nomorMeja);
+    
+    if (nomorMeja < 1) or (nomorMeja > 20) then
+    begin
+        writeln('Nomor meja tidak valid.');
+        exit;
+    end;
 
-
+    // Untuk mengecek apakah meja sudah dipesan atau belum
+    if not meja[nomorMeja].tersedia then
+    begin
+        writeln('Meja tersebut sudah dipesan oleh ', meja[nomorMeja].nama);
+        exit;
+    end;
+    
+    // Memasukkan data reservasi
+    meja[nomorMeja].tersedia := false;
+    write('Masukkan Nama Pemesan: '); readln(meja[nomorMeja].nama);
+    write('Masukkan Email: '); readln(meja[nomorMeja].email);
+    write('Masukkan Nomor Telepon: '); readln(meja[nomorMeja].no_telepon);
+    write('Masukkan Jumlah Tamu: '); readln(meja[nomorMeja].jumlah_tamu);
+    write('Catatan Khusus (Opsional): '); readln(meja[nomorMeja].catatan);
+    
+    writeln('Reservasi Berhasil!');
+end;
 
 // Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
 begin
