@@ -127,10 +127,10 @@ end;
 // Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
 begin
     clrscr;
-    writeln('===============================');
-    writeln('Menu Sistem Reservasi Restoran');
-    writeln('===============================');
     repeat
+        writeln('===============================');
+        writeln('Menu Sistem Reservasi Restoran');
+        writeln('===============================');
         writeln('1. Tampilakan Ketersediaan');
         writeln('2. Reservasi Meja');
         writeln('3. Simpan Data Reservasi');
