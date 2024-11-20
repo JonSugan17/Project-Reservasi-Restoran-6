@@ -130,10 +130,22 @@ begin
     writeln('===============================');
     writeln('Menu Sistem Reservasi Restoran');
     writeln('===============================');
-    writeln('1. Tampilakan Ketersediaan');
-    writeln('2. Reservasi Meja');
-    writeln('3. simpan Data Reservasi');
-    writeln('4. Cari Reservasi');
-    writeln('5. Keluar');
-    writeln('Pilih Menu: '); readln();
+    repeat
+        writeln('1. Tampilakan Ketersediaan');
+        writeln('2. Reservasi Meja');
+        writeln('3. Simpan Data Reservasi');
+        writeln('4. Cari Reservasi');
+        writeln('5. Keluar');
+        write('Pilih Menu: '); readln(pilihan);
+
+        case pilihan of
+            1: tampilkanKetersediaan;
+            2: reservasiMeja;
+            3: SimpanDataReservasi;
+            4: // Tambahkan prosedur untuk mencari reservasi di sini
+            5: writeln('Terima kasih!');
+            else
+                writeln('Pilihan tidak valid.');
+        end;
+    until pilihan = 5;
 end.
