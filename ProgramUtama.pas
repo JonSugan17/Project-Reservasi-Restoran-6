@@ -201,7 +201,7 @@ begin
             1: tampilkanKetersediaan;
             2: reservasiMeja;
             3: SimpanDataReservasi;
-            4: CariReservasi;
+            4: CariReservasiProsedur;
             5: writeln('Terima kasih!');
             else
                 writeln('Pilihan tidak valid.');
