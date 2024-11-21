@@ -138,14 +138,15 @@ begin
 
     repeat
         clrscr;
-        writeln('===============================');
-        writeln('Menu Sistem Reservasi Restoran');
-        writeln('===============================');
-        writeln('1. Tampilakan Ketersediaan');
-        writeln('2. Reservasi Meja');
-        writeln('3. Simpan Data Reservasi');
-        writeln('4. Cari Reservasi');
-        writeln('5. Keluar');
+        writeln('|===============================|');
+        writeln('|Menu Sistem Reservasi Restoran |');
+        writeln('|===============================|');
+        writeln('| 1. Tampilkan Ketersediaan     |');
+        writeln('| 2. Reservasi Meja             |');
+        writeln('| 3. Simpan Data Reservasi      |');
+        writeln('| 4. Cari Reservasi             |');
+        writeln('| 5. Keluar                     |');
+        writeln('|===============================|');
         writeln;
         write('Pilih Menu: ');readln(pilihan);
         writeln;
