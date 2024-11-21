@@ -94,17 +94,15 @@ begin
     writeln('Reservasi Berhasil!');
 end;
 
-procedure CariReservasi();
+
+// buat pencarian memakai rekursif
+function CariReservasi(var Data: array of Reservasi; Nama: String; Indeks: Integer): Integer;
 begin
-    writeln('wlee');
-    // buat pencarian memakai rekursif
-    function CariReservasi(var Data: array of Reservasi; Nama: String; Indeks: Integer): Integer;
-begin
-  if Indeks > High(Data) then
-    CariReservasi := -1
-  else if Data[Indeks].NamaPemesan = Nama then
-    CariReservasi := Indeks
-  else
+    if Indeks > High(Data) then
+        CariReservasi := -1
+    else if Data[Indeks].NamaPemesan = Nama then
+        CariReservasi := Indeks
+    else
     CariReservasi := CariReservasi(Data, Nama, Indeks + 1);
 end;
 
