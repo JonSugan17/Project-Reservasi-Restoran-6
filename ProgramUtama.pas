@@ -98,7 +98,6 @@ end;
 // buat pencarian memakai rekursif
 procedure CariReservasi();
 begin
-    // buat pencarian memakai rekursif
     function CariReservasi(var Data: array of Reservasi; Nama: String; Indeks: Integer): Integer;
 begin
   if Indeks > High(Data) then
