@@ -3,34 +3,35 @@ uses crt;
 // Attribut dari meja yang dipesan 
 type
     Tmeja = record
-    nomor: integer;          // nomor meja
-    tersedia: boolean;       // ketersediaan meja, jika tersedia maka nilainya true
-    nama: string;            // nama pemesan meja
-    email: string;           // email pemesan meja
-    no_telepon: string;      // nomor telepon pemesan meja
-    jumlah_tamu: integer;    // jumlah tamu pada meja tersebut
-    catatan: string;         // catatan pemesan meja
-    
+        nomor: integer;          // nomor meja
+        tersedia: boolean;       // ketersediaan meja, jika tersedia maka nilainya true
+        nama: string;            // nama pemesan meja
+        email: string;           // email pemesan meja
+        no_telepon: string;      // nomor telepon pemesan meja
+        jumlah_tamu: integer;    // jumlah tamu pada meja tersebut
+        catatan: string;         // catatan pemesan meja
+    end;
+
 var
     meja: array[1..20] of Tmeja;        // penyimpanan sementara data meja
-    txt: text                           // file untuk menyimpan data
-    pilihan: integer                    // pilihan menu yang akan dipilih
+    txt: text;                          // file untuk menyimpan data
+    pilihan: integer;                    // pilihan menu yang akan dipilih
 
 
 // procedure untuk menetapkan nilai default attribut meja
 procedure inisialisasiMeja;
 var
-    i : integer
+    i : integer;
 begin
     // menetapkan nilai attribut meja menggunakan perulangan
     for i := 1 to 20 do
     begin
-        meja[i].nomor := i,
+        meja[i].nomor := i;
         meja[i].tersedia := true;
-        meja[i].nama := '';`
+        meja[i].nama := '';
         meja[i].email := '';
         meja[i].no_telepon := '';
-        meja[i].jumlah_tamu := '';
+        meja[i].jumlah_tamu := 0;
         meja[i].catatan := '';
     end;
 end;
@@ -39,9 +40,9 @@ end;
 // procedure untuk mengecek apakah terdapat meja yang tersedia
 procedure tampilkanKetersediaan;
 var
-    i : integer
+    i : integer;
 begin
-    writeln('Data Meja Yang Masih Tersedia');
+    writeln('Data Meja Yang Masih Tersedia:');
     for i := 1 to 20 do             // perulangan dilakukan sebanyak 20 kali 
     begin
         if meja[i].tersedia then
@@ -93,6 +94,12 @@ begin
     writeln('Reservasi Berhasil!');
 end;
 
+procedure CariReservasi();
+begin
+    writeln('wlee');
+    // buat pencarian memakai rekursif
+end;
+
 
 procedure SimpanDataReservasi;
 var
@@ -125,9 +132,12 @@ begin
 end;
 
 // Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
+
 begin
-    clrscr;
+    inisialisasiMeja;
+
     repeat
+        clrscr;
         writeln('===============================');
         writeln('Menu Sistem Reservasi Restoran');
         writeln('===============================');
@@ -136,16 +146,24 @@ begin
         writeln('3. Simpan Data Reservasi');
         writeln('4. Cari Reservasi');
         writeln('5. Keluar');
-        write('Pilih Menu: '); readln(pilihan);
+        writeln;
+        write('Pilih Menu: ');readln(pilihan);
+        writeln;
 
         case pilihan of
             1: tampilkanKetersediaan;
             2: reservasiMeja;
             3: SimpanDataReservasi;
-            4: // Tambahkan prosedur untuk mencari reservasi di sini
+            4: CariReservasi;
             5: writeln('Terima kasih!');
             else
                 writeln('Pilihan tidak valid.');
+        end;
+        if pilihan <> 5 then
+        begin
+            writeln;
+            write('Tekan Enter untuk melanjutkan...');
+            readln;
         end;
     until pilihan = 5;
 end.

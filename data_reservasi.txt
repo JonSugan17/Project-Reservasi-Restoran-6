@@ -1,0 +1,7 @@
+Meja 2:
+  Nama       : hadi
+  Email      : hadi@gmail.com
+  No. Telepon: 2434232442
+  Jumlah Tamu: 2
+  Catatan    : 2
+
