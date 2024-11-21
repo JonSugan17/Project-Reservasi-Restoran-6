@@ -94,44 +94,74 @@ begin
     writeln('Reservasi Berhasil!');
 end;
 
-
-// Fungsi rekursif untuk mencari reservasi berdasarkan nama
-function CariReservasi(var Data: array of Tmeja; Nama: string; Indeks: Integer): Integer;
+// Prosedur untuk mencari reservasi berdasarkan nama secara rekursif
+procedure CariReservasiRekursif(index: integer; keyword: string; var ditemukan: boolean);
 begin
-    if Indeks > High(Data) then
-        CariReservasi := -1 // Tidak ditemukan
-    else if Data[Indeks].nama = Nama then
-        CariReservasi := Indeks // Ditemukan pada indeks ini
-    else
-        CariReservasi := CariReservasi(Data, Nama, Indeks + 1); // Rekursi ke indeks berikutnya
-end;
-
-// Prosedur untuk mencari reservasi
-procedure CariReservasiProsedur;
-var
-    Nama: string;
-    Indeks: Integer;
-begin
-    writeln('=====================');
-    writeln('     Cari Reservasi');
-    writeln('=====================');
-    write('Masukkan Nama Pemesan: '); readln(Nama);
-    
-    // Panggil fungsi rekursif untuk mencari
-    Indeks := CariReservasi(meja, Nama, 1);
-    
-    if Indeks = -1 then
-        writeln('Reservasi atas nama "', Nama, '" tidak ditemukan.')
-    else
+    // Jika sudah sampai pada akhir array meja
+    if index > 20 then
     begin
-        writeln('Reservasi ditemukan di Meja ', meja[Indeks].nomor, ':');
-        writeln('  Nama       : ', meja[Indeks].nama);
-        writeln('  Email      : ', meja[Indeks].email);
-        writeln('  No. Telepon: ', meja[Indeks].no_telepon);
-        writeln('  Jumlah Tamu: ', meja[Indeks].jumlah_tamu);
-        writeln('  Catatan    : ', meja[Indeks].catatan);
+        if not ditemukan then
+            writeln('Tidak ditemukan reservasi dengan nama "', keyword, '".');
+        exit;
     end;
+
+    // Periksa apakah nama pemesan sesuai dengan keyword
+    if (not meja[index].tersedia) and (Pos(LowerCase(keyword), LowerCase(meja[index].nama)) > 0) then
+    begin
+        ditemukan := true;
+        writeln('Meja ', meja[index].nomor, ':');
+        writeln('  Nama       : ', meja[index].nama);
+        writeln('  Email      : ', meja[index].email);
+        writeln('  No. Telepon: ', meja[index].no_telepon);
+        writeln('  Jumlah Tamu: ', meja[index].jumlah_tamu);
+        writeln('  Catatan    : ', meja[index].catatan);
+        writeln;
+    end;
+
+    // Rekursif untuk memeriksa meja berikutnya
+    CariReservasiRekursif(index + 1, keyword, ditemukan);
 end;
+
+// Prosedur utama untuk mencari reservasi
+procedure CariReservasi;
+var
+    keyword: string;
+    ditemukan: boolean;
+begin
+    clrscr;
+    writeln('=========================');
+    writeln('     Cari Reservasi');
+    writeln('=========================');
+    write('Masukkan nama pemesan yang ingin dicari: ');
+    readln(keyword);
+    ditemukan := false;
+    CariReservasiRekursif(1, keyword, ditemukan);
+end;
+
+procedure SimpanDataReservasi;
+var
+    i: integer; // Variabel untuk iterasi melalui array meja
+begin
+    // Menghubungkan variabel txt dengan file bernama 'data_reservasi.txt'
+    assign(txt, 'data_reservasi.txt');
+    // Membuka file untuk ditulis ulang, file sebelumnya akan dihapus jika ada
+    rewrite(txt);
+    // Looping untuk memproses semua meja dari nomor 1 hingga 20
+    for i := 1 to 20 do
+    begin
+        // Memeriksa apakah meja telah dipesan (tidak tersedia)
+        if not meja[i].tersedia then
+        begin
+            // Menulis data meja yang telah dipesan ke dalam file
+            writeln(txt, 'Meja ', meja[i].nomor, ':'); // Menulis nomor meja
+            writeln(txt, '  Nama       : ', meja[i].nama); // Menulis nama pemesan
+            writeln(txt, '  Email      : ', meja[i].email); // Menulis email pemesan
+            writeln(txt, '  No. Telepon: ', meja[i].no_telepon); // Menulis nomor telepon
+            writeln(txt, '  Jumlah Tamu: ', meja[i].jumlah_tamu); // Menulis jumlah tamu
+            writeln(txt, '  Catatan    : ', meja[i].catatan); // Menulis catatan tambahan
+            writeln(txt); // Menulis baris kosong untuk memisahkan setiap meja
+        end;
+    end;
     // Menutup file setelah selesai menulis
     close(txt);
     // Memberikan konfirmasi kepada pengguna bahwa data telah disimpan
@@ -177,10 +207,10 @@ begin
     close(txt);
 end;
 
-// Ini Menu Aatarmuka, menggunakan Repeat dan Case Of
+// Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
 begin
-    MuatDataReservasi;
     inisialisasiMeja;
+    MuatDataReservasi; // Memuat data reservasi dari file jika ada
 
     repeat
         clrscr;
@@ -201,7 +231,7 @@ begin
             1: tampilkanKetersediaan;
             2: reservasiMeja;
             3: SimpanDataReservasi;
-            4: CariReservasiProsedur;
+            4: CariReservasi;
             5: writeln('Terima kasih!');
             else
                 writeln('Pilihan tidak valid.');
