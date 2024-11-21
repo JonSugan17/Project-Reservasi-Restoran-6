@@ -179,6 +179,7 @@ end;
 
 // Ini Menu Aatarmuka, menggunakan Repeat dan Case Of
 begin
+    MuatDataReservasi;
     inisialisasiMeja;
 
     repeat
