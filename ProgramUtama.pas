@@ -1,5 +1,5 @@
 program SistemReservasiRestoran;
-uses crt;
+uses crt, SysUtils;
 // Attribut dari meja yang dipesan 
 type
     Tmeja = record
@@ -131,8 +131,46 @@ begin
     writeln('Data reservasi telah disimpan ke file data_reservasi.txt');
 end;
 
-// Ini Menu Aatarmuka, nanti menggunakan Repeat dan Case Of
+procedure MuatDataReservasi;
+var
+    i, nomor: integer;
+    temp: string;
+begin
+    assign(txt, 'data_reservasi.txt');
+    {$I-} // Nonaktifkan error I/O agar tidak berhenti jika file tidak ditemukan
+    reset(txt);
+    {$I+} // Aktifkan kembali error I/O
 
+    if IOResult <> 0 then
+    begin
+        writeln('File data_reservasi.txt tidak ditemukan. Data akan diinisialisasi ulang.');
+        exit;
+    end;
+
+    while not eof(txt) do
+    begin
+        readln(txt, temp); // Baca baris pertama (Meja X:)
+        if Pos('Meja ', temp) = 1 then
+        begin
+            // Ambil nomor meja dari teks, misalnya dari "Meja 1:" -> ambil 1
+            nomor := StrToInt(Copy(temp, 6, Pos(':', temp) - 6));
+            meja[nomor].nomor := nomor;
+            meja[nomor].tersedia := false; // Meja otomatis tidak tersedia
+
+            // Baca data pemesan berikutnya
+            readln(txt, temp); meja[nomor].nama := Copy(temp, 15, Length(temp));
+            readln(txt, temp); meja[nomor].email := Copy(temp, 15, Length(temp));
+            readln(txt, temp); meja[nomor].no_telepon := Copy(temp, 15, Length(temp));
+            readln(txt, temp); meja[nomor].jumlah_tamu := StrToInt(Copy(temp, 15, Length(temp)));
+            readln(txt, temp); meja[nomor].catatan := Copy(temp, 15, Length(temp));
+            readln(txt); // Skip baris kosong
+        end;
+    end;
+
+    close(txt);
+end;
+
+// Ini Menu Aatarmuka, menggunakan Repeat dan Case Of
 begin
     inisialisasiMeja;
 
