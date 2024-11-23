@@ -94,6 +94,54 @@ begin
     writeln('Reservasi Berhasil!');
 end;
 
+// Prosedur untuk membatalkan reservasi meja
+procedure BatalReservasi;
+var
+    nomorMeja: integer;
+    konfirmasi: char;
+begin
+    clrscr;
+    writeln('=========================');
+    writeln('    Pembatalan Reservasi');
+    writeln('=========================');
+
+    // Tampilkan ketersediaan meja terlebih dahulu
+    tampilkanKetersediaan;
+    
+    writeln;
+    write('Masukkan Nomor Meja yang Ingin Dibatalkan (1-20): '); 
+    readln(nomorMeja);
+
+    if (nomorMeja < 1) or (nomorMeja > 20) then
+    begin
+        writeln('Nomor meja tidak valid.');
+        exit;
+    end;
+
+    // Periksa apakah meja sudah dipesan
+    if meja[nomorMeja].tersedia then
+    begin
+        writeln('Meja tersebut belum dipesan.');
+        exit;
+    end;
+
+    // Konfirmasi pembatalan
+    writeln('Apakah Anda yakin ingin membatalkan reservasi meja ', nomorMeja, '? (y/n)');
+    readln(konfirmasi);
+    if (konfirmasi = 'y') or (konfirmasi = 'Y') then
+    begin
+        meja[nomorMeja].tersedia := true;
+        meja[nomorMeja].nama := '';
+        meja[nomorMeja].email := '';
+        meja[nomorMeja].no_telepon := '';
+        meja[nomorMeja].jumlah_tamu := 0;
+        meja[nomorMeja].catatan := '';
+        writeln('Reservasi meja ', nomorMeja, ' berhasil dibatalkan.');
+    end
+    else
+        writeln('Pembatalan reservasi dibatalkan.');
+end;
+
 // Prosedur untuk mencari reservasi berdasarkan nama secara rekursif
 procedure CariReservasiRekursif(index: integer; keyword: string; var ditemukan: boolean);
 begin
@@ -214,15 +262,16 @@ begin
 
     repeat
         clrscr;
-        writeln('|===============================|');
-        writeln('|Menu Sistem Reservasi Restoran |');
-        writeln('|===============================|');
-        writeln('| 1. Tampilkan Ketersediaan     |');
-        writeln('| 2. Reservasi Meja             |');
-        writeln('| 3. Simpan Data Reservasi      |');
-        writeln('| 4. Cari Reservasi             |');
-        writeln('| 5. Keluar                     |');
-        writeln('|===============================|');
+        writeln('|================================|');
+        writeln('| Menu Sistem Reservasi Restoran |');
+        writeln('|================================|');
+        writeln('| 1. Tampilkan Ketersediaan      |');
+        writeln('| 2. Reservasi Meja              |');
+        writeln('| 3. Pembatalan Reservasi Meja   |');
+        writeln('| 4. Simpan Data Reservasi       |');
+        writeln('| 5. Cari Reservasi              |');
+        writeln('| 6. Keluar                      |');
+        writeln('|================================|');
         writeln;
         write('Pilih Menu: ');readln(pilihan);
         writeln;
@@ -230,9 +279,10 @@ begin
         case pilihan of
             1: tampilkanKetersediaan;
             2: reservasiMeja;
-            3: SimpanDataReservasi;
-            4: CariReservasi;
-            5: writeln('Terima kasih!');
+            3: BatalReservasi;
+            4: SimpanDataReservasi;
+            5: CariReservasi;
+            6: writeln('Terima kasih!');
             else
                 writeln('Pilihan tidak valid.');
         end;
