@@ -286,11 +286,11 @@ begin
             else
                 writeln('Pilihan tidak valid.');
         end;
-        if pilihan <> 5 then
+        if pilihan <> 6 then
         begin
             writeln;
             write('Tekan Enter untuk melanjutkan...');
             readln;
         end;
-    until pilihan = 5;
+    until pilihan = 6;
 end.
