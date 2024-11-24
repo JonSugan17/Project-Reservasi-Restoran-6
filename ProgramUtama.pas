@@ -9,6 +9,7 @@ type
         email: string;           // email pemesan meja
         no_telepon: string;      // nomor telepon pemesan meja
         jumlah_tamu: integer;    // jumlah tamu pada meja tersebut
+        tanggal: string;         // tanggal reservasi
         catatan: string;         // catatan pemesan meja
     end;
 
@@ -58,6 +59,7 @@ end;
 procedure reservasiMeja;
 var
     nomorMeja: integer;
+    tanggalReservasi: string;
 begin
     writeln('=====================');
     writeln('   Reservasi Meja');
@@ -89,6 +91,8 @@ begin
     write('Masukkan Email: '); readln(meja[nomorMeja].email);
     write('Masukkan Nomor Telepon: '); readln(meja[nomorMeja].no_telepon);
     write('Masukkan Jumlah Tamu: '); readln(meja[nomorMeja].jumlah_tamu);
+    write('Masukkan Tanggal Reservasi (DD-MM-YYYY): '); readln(tanggalReservasi);
+    meja[nomorMeja].tanggal := tanggalReservasi;
     write('Catatan Khusus (Opsional): '); readln(meja[nomorMeja].catatan);
     
     writeln('Reservasi Berhasil!');
@@ -101,9 +105,9 @@ var
     konfirmasi: char;
 begin
     clrscr;
-    writeln('=========================');
+    writeln('============================');
     writeln('    Pembatalan Reservasi');
-    writeln('=========================');
+    writeln('============================');
 
     // Tampilkan ketersediaan meja terlebih dahulu
     tampilkanKetersediaan;
@@ -135,6 +139,7 @@ begin
         meja[nomorMeja].email := '';
         meja[nomorMeja].no_telepon := '';
         meja[nomorMeja].jumlah_tamu := 0;
+        meja[nomorMeja].tanggal := '';
         meja[nomorMeja].catatan := '';
         writeln('Reservasi meja ', nomorMeja, ' berhasil dibatalkan.');
     end
@@ -162,6 +167,7 @@ begin
         writeln('  Email      : ', meja[index].email);
         writeln('  No. Telepon: ', meja[index].no_telepon);
         writeln('  Jumlah Tamu: ', meja[index].jumlah_tamu);
+        writeln('  Tanggal    : ', meja[index].tanggal);
         writeln('  Catatan    : ', meja[index].catatan);
         writeln;
     end;
@@ -206,6 +212,7 @@ begin
             writeln(txt, '  Email      : ', meja[i].email); // Menulis email pemesan
             writeln(txt, '  No. Telepon: ', meja[i].no_telepon); // Menulis nomor telepon
             writeln(txt, '  Jumlah Tamu: ', meja[i].jumlah_tamu); // Menulis jumlah tamu
+            writeln(txt, '  Tanggal    : ', meja[i].tanggal); //menulis Tanggal reservasi
             writeln(txt, '  Catatan    : ', meja[i].catatan); // Menulis catatan tambahan
             writeln(txt); // Menulis baris kosong untuk memisahkan setiap meja
         end;
@@ -243,10 +250,13 @@ begin
             meja[nomor].tersedia := false; // Meja otomatis tidak tersedia
 
             // Baca data pemesan berikutnya
+            nomor := StrToInt(Copy(temp, 6, Pos(':', temp) - 6));
+            meja[nomor].tersedia := false;
             readln(txt, temp); meja[nomor].nama := Copy(temp, 15, Length(temp));
             readln(txt, temp); meja[nomor].email := Copy(temp, 15, Length(temp));
             readln(txt, temp); meja[nomor].no_telepon := Copy(temp, 15, Length(temp));
             readln(txt, temp); meja[nomor].jumlah_tamu := StrToInt(Copy(temp, 15, Length(temp)));
+            readln(txt, temp); meja[nomor].tanggal := Copy(temp, 15, Length(temp));
             readln(txt, temp); meja[nomor].catatan := Copy(temp, 15, Length(temp));
             readln(txt); // Skip baris kosong
         end;
