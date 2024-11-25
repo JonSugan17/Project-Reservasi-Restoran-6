@@ -18,7 +18,6 @@ var
     txt: text;                          // file untuk menyimpan data
     pilihan: integer;                    // pilihan menu yang akan dipilih
 
-
 // procedure untuk menetapkan nilai default attribut meja
 procedure inisialisasiMeja;
 var
@@ -36,7 +35,6 @@ begin
         meja[i].catatan := '';
     end;
 end;
-
 
 // procedure untuk mengecek apakah terdapat meja yang tersedia
 procedure tampilkanKetersediaan;
@@ -303,4 +301,5 @@ begin
             readln;
         end;
     until pilihan = 6;
+    readkey;
 end.
